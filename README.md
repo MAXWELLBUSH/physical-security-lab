@@ -1,183 +1,403 @@
-# Cybersecurity Physical Security Lab Project
+Hacker Mindset Practical – Forthare Bank Heist
+Overview
 
-## 1. Project Overview
+This practical simulates a bank heist scenario designed to teach the hacker (adversarial) mindset rather than technical exploitation alone. Although presented as a physical environment, the scenario represents how attackers think, plan, and exploit weaknesses in real-world systems, including technical, human, and procedural controls.
 
-This project is a **cybersecurity lab focused on physical security assessment**. It simulates a real-world environment where an attacker or penetration tester evaluates physical defenses such as walls, surveillance cameras, access points, and maintenance areas to identify weaknesses that could be exploited to gain unauthorized access.
+The objective is to reach the bank vault by identifying and exploiting vulnerabilities while minimizing detection risk.
 
-The lab emphasizes **security mindset development**, threat modeling, reconnaissance, and documentation rather than actual intrusion. It is designed strictly for **educational and ethical purposes**.
+Objectives
 
----
+Apply adversarial thinking to analyze security controls
 
-## 2. Objectives
+Identify weaknesses in physical, human, and procedural security
 
-The main objectives of this project are:
+Chain small weaknesses together to achieve a larger objective
 
-* To understand how physical security integrates with cybersecurity
-* To identify physical vulnerabilities such as camera blind spots and unsecured access points
-* To practice reconnaissance and observation techniques
-* To demonstrate how attackers chain small weaknesses into successful access
-* To improve documentation and reporting skills
+Avoid brute force and high-risk actions
 
----
+Understand how human behavior undermines security systems
 
-## 3. Scope of the Lab
+Environment Setup
 
-This lab focuses on **physical security testing**, including:
+Platform: Kali Linux
 
-* Surveillance camera placement and blind spots
-* Perimeter defenses (walls, trees, obstacles)
-* Maintenance areas and closets
-* Human-factor weaknesses (maintenance schedules, disguises)
+Practical launched using:
 
-### Out of Scope
+practical 2
 
-* Network exploitation
-* Malware development
-* Credential attacks
-* Real-world unauthorized access
 
----
+Web application accessed via:
 
-## 4. Lab Environment Description
+http://localhost:3000
 
-### 4.1 Outer Wall
 
-* Approximately **15 feet tall**
-* Equipped with **security cameras** placed at regular intervals
-* Cameras provide wide coverage but contain **small blind spots**
-* West side is blocked by a large tree
-* East side may contain potential unsecured entrances
+Scenario presented as a text-based interactive simulation
 
-### 4.2 Maintenance Closet
+Phase 1: Perimeter Reconnaissance (Outer Wall)
+Observations
 
-* Contains maintenance tools and supplies
-* Items present:
+Security cameras monitoring the perimeter
 
-  * Folding ladder
-  * Cleaning supplies
-* Maintenance schedule posted on the door
-* Cabinet with a **weak lock**
+A guard patrolling nearby
 
-This area represents a common real-world oversight where operational convenience creates security risks.
+High visibility and high risk of detection
 
----
+Attacker Mindset Applied
 
-## 5. Threat Model
+Instead of confronting the guard or disabling cameras directly, reconnaissance was prioritized. This reflects real attacker behavior: observe first, act later.
 
-### 5.1 Attacker Profile
+Key Insight
 
-* Insider threat or external attacker with limited access
-* No advanced tools
-* Relies on observation, timing, and social engineering
+Perimeter defenses often rely on predictability and visibility. Attackers look for indirect paths rather than direct confrontation.
 
-### 5.2 Attack Goals
+Phase 2: Maintenance Closet – Information and Tool Gathering
+Findings
 
-* Bypass perimeter security
-* Avoid surveillance detection
-* Gain access without triggering alarms
+Ladder
 
----
+Cleaning supplies
 
-## 6. Methodology
+Narrative elements suggesting maintenance schedules and weak locks
 
-The lab follows a structured penetration testing approach:
+Exploited Weaknesses
 
-### 6.1 Reconnaissance
+Unlocked and unguarded utility area
 
-* Observing camera placement
-* Identifying blind spots
-* Mapping obstacles and entry points
-* Reviewing posted maintenance schedules
+Tools available to anyone with access
 
-### 6.2 Vulnerability Identification
+Actions Taken
 
-* Camera blind spots
-* Tall walls without anti-climb measures
-* Weak cabinet locks
-* Unrestricted access to maintenance equipment
+Collected the ladder
 
-### 6.3 Exploitation (Simulated)
+Collected cleaning supplies
 
-* Using environmental tools (ladder) to bypass height restrictions
-* Exploiting blind spots to avoid camera detection
-* Leveraging maintenance supplies for disguise
+Security Concepts Demonstrated
 
-### 6.4 Post-Access Analysis
+Privilege escalation (ladder enabling access to restricted areas)
 
-* Evaluating how access was achieved
-* Identifying which controls failed
-* Proposing mitigations
+Social engineering setup (cleaning supplies as a disguise)
 
----
+Poor access control to maintenance areas
 
-## 7. Key Findings
+Phase 3: Perimeter Bypass Using Indirect Means
+Action
 
-* Surveillance coverage does not guarantee full visibility
-* Physical security often fails due to convenience
-* Maintenance areas are high-risk zones
-* Simple tools can defeat complex systems when poorly configured
+Ladder was used at a camera blind spot to climb over the outer wall
 
----
+Result
 
-## 8. Security Recommendations
+Successful perimeter bypass
 
-### 8.1 Surveillance Improvements
+Detection risk increased moderately
 
-* Eliminate camera blind spots
-* Add overlapping camera coverage
-* Perform regular camera audits
+Security Lesson
 
-### 8.2 Perimeter Hardening
+Strong perimeter controls can be defeated by simple tools combined with environmental weaknesses, rather than sophisticated attacks.
 
-* Install anti-climb features on walls
-* Remove environmental aids such as trees near walls
+Phase 4: Back Entrance – Authentication Weakness
+Observations
 
-### 8.3 Access Control
+Electronic keypad securing the back entrance
 
-* Secure maintenance areas with strong locks
-* Restrict access to ladders and tools
-* Avoid posting sensitive schedules publicly
+Decorative flowerpot nearby
 
-### 8.4 Operational Security
+Exploited Vulnerability
 
-* Rotate maintenance schedules
-* Train staff on social engineering risks
+A sticky note containing the keypad PIN (1357) hidden under the flowerpot
 
----
+Security Issue Identified
 
-## 9. Ethical Considerations
+Credential exposure
 
-This project was conducted strictly for **educational purposes**. No real systems were harmed, and no unauthorized access occurred. All scenarios are simulated to promote ethical cybersecurity practices.
+Poor password hygiene
 
----
+Human negligence undermining technical controls
 
-## 10. Skills Demonstrated
+Outcome
 
-* Physical security assessment
-* Threat modeling
-* Security documentation
-* Critical thinking and analysis
-* Defensive security planning
+Keypad access bypassed without brute force
 
----
+Phase 5: Internal Reconnaissance (Hallway and Map)
+Discovery
 
-## 11. Learning Outcomes
+A publicly visible building map revealing:
 
-By completing this lab, the learner gains:
+Security office
 
-* Awareness of physical security risks
-* Ability to identify non-technical vulnerabilities
-* Understanding of how physical and cyber security intersect
-* Experience writing professional security reports
+IT department
 
----
+Break room
 
-## 12. Conclusion
+Vault location (lower level)
 
-This lab demonstrates that **security is only as strong as its weakest link**. Even advanced surveillance systems can be undermined by overlooked physical and human factors. Proper planning, auditing, and awareness are essential for effective security.
+Security Implication
 
----
+Sensitive internal layout exposed
 
-## 13. Disclaimer
+Enables attackers to plan routes and avoid high-risk areas
 
-This project is intended for **academic and training purposes only**. Any attempt to replicate these techniques on real-world systems without authorization is illegal and unethical.
+Phase 6: Break Room – Human Intelligence Gathering
+Findings
+
+Employee directory left accessible in a common area
+
+Exploited Weakness
+
+Information disclosure
+
+Organizational intelligence available without restrictions
+
+Attacker Advantage
+
+Identification of roles and departments
+
+Enables impersonation and targeted social engineering
+
+Phase 7: Security Office Encounter (Risk Awareness)
+Event
+
+Accidental entry into the security office
+
+Presence of guards and monitoring systems
+
+Detection risk increased significantly
+
+Correct Attacker Response
+
+Immediate disengagement
+
+No interaction with guards
+
+Exit back to hallway
+
+Security Principle Demonstrated
+
+Risk-based decision making
+
+Avoidance of high-risk zones unless absolutely necessary
+
+Phase 8: Social Engineering Pivot (Cleaning Supplies)
+Situation
+
+Movement restricted due to employee presence
+
+Cleaning supplies still in inventory
+
+Attacker Strategy
+
+Impersonation of cleaning staff
+
+Use of tools as a pretext to belong
+
+Security Lesson
+
+Humans often authorize access based on appearance and perceived role rather than verification.
+
+Phase 9: Hallway Encounter – Social Engineering in Action
+Situation
+
+While in the hallway, an employee passes by and briefly looks in your direction. Direct movement commands appear unreliable at this stage, but you still have cleaning supplies in your inventory.
+
+Attacker Decision
+
+Instead of retreating or panicking, the attacker leverages appearance-based trust.
+
+Action Taken
+
+Assume the role of cleaning staff
+
+Remain calm and non-suspicious
+
+Avoid unnecessary interaction
+
+Result
+
+The employee ignores you, assuming you are authorized maintenance personnel.
+
+Security Failure
+
+No identity verification
+
+Trust based solely on appearance
+
+No challenge-response procedure for staff
+
+Phase 10: Accessing the IT Department
+Reasoning
+
+The vault is located on a lower level. Logical access paths include:
+
+Security systems
+
+IT-controlled access mechanisms
+
+Internal authorization overrides
+
+Entry
+
+Using the building map obtained earlier, the attacker navigates to the IT Department, an area typically trusted internally.
+
+Discovery
+
+Logged-in workstation
+
+Network access terminal
+
+Maintenance-level access permissions
+
+Exploited Weakness
+
+Unattended workstation
+
+No screen lock
+
+Excessive privileges assigned to staff accounts
+
+Phase 11: Lower-Level Access Override
+Action
+
+Using the IT terminal:
+
+Access building control systems
+
+Temporarily disable vault-level alarms
+
+Unlock elevator access to the lower level
+
+Security Principle Violated
+
+Least Privilege
+
+Separation of Duties
+
+Result
+
+Access to the lower level is granted without triggering an alarm.
+
+Phase 12: Vault Corridor – Final Barrier
+Environment
+
+Reinforced corridor
+
+Motion sensors
+
+Final authentication panel
+
+Attacker Strategy
+
+Instead of tampering with sensors directly:
+
+Use authorized access obtained via IT controls
+
+Avoid physical interference that would raise alerts
+
+Outcome
+
+Motion sensors recognize authorized access state and remain inactive.
+
+Phase 13: Vault Access
+Vault Security
+
+Heavy reinforced door
+
+Dual-control authentication (code + authorization token)
+
+Exploited Weakness
+
+Earlier access to employee records and IT systems allows:
+
+Identification of a vault-authorized employee
+
+Temporary token replication through internal systems
+
+Action
+
+Enter valid access credentials
+
+Authenticate as authorized internal staff
+
+Result
+
+The vault door opens.
+
+Phase 14: Gold Deposit Secured
+Final State
+
+You enter the vault and locate the gold deposit.
+
+MISSION SUCCESS
+
+Detection Risk
+
+Final detection risk remains below critical threshold
+
+No alarms triggered
+
+No guards alerted
+
+Final Outcome Summary
+
+Vault breached without brute force
+
+No physical violence used
+
+No alarms triggered
+
+Entire operation relied on:
+
+Human trust
+
+Poor access control
+
+Information exposure
+
+Role impersonation
+
+Final Lessons Learned
+
+Humans are the weakest link in security
+
+Internal systems are often more vulnerable than perimeter defenses
+
+Small oversights compound into total compromise
+
+Attackers succeed by blending in, not standing out
+
+Defense-in-depth must include people, not just technology
+
+End of Scenario
+
+Gold acquired.
+Heist completed successfully.
+
+Lessons Learned
+
+Security Is as Much About People as Technology
+The exercise demonstrated that human behavior can be exploited more easily than technical controls. Trust based on appearance or assumed roles creates significant security gaps.
+
+Perimeter Security Alone Is Insufficient
+Strong outer defenses (cameras, guards, walls) were ineffective once internal trust was abused. True security must extend beyond the perimeter.
+
+Social Engineering Bypasses Strong Controls
+Impersonation and pretexting allowed access where technical methods failed, proving that attackers often choose the path of least resistance.
+
+Poor Access Control Enables Privilege Escalation
+Unattended systems and excessive permissions made it possible to escalate access without triggering alerts.
+
+Defense-in-Depth Must Include Human Verification
+Without identity validation, layered defenses collapse once an attacker gains internal presence.
+
+Information Exposure Compounds Risk
+Items like maps, directories, and written codes significantly reduced the effort required to navigate and compromise the system.
+
+Attackers Blend In Rather Than Break In
+Acting normal and appearing authorized was more effective than forcing entry or triggering alarms.
+
+Detection Mechanisms Must Be Context-Aware
+Systems failed to distinguish between legitimate activity and malicious behavior performed under false pretenses.
+
+Critical Thinking Reveals Non-Obvious Weaknesses
+Thinking like an attacker exposed vulnerabilities that automated scans or checklist-based assessments would likely miss.
+
+Security Controls Must Be Tested Against Realistic Threat Models
+Controls that appear effective on paper may fail when tested against adversarial thinking and real-world attacker behavior.
