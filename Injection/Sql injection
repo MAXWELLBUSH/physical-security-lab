@@ -1,0 +1,132 @@
+Hub 2 – Injection Challenge (SQL Injection)
+⚠️ Disclaimer
+
+This practical contains intentional SQL injection vulnerabilities and was completed strictly for educational purposes in a controlled lab environment.
+
+Introduction
+
+In this challenge, I explored SQL Injection, a common web application vulnerability that occurs when user input is not properly validated or sanitized before being included in SQL queries. The lab provided a vulnerable product search feature that I exploited to understand how attackers can manipulate database queries to access unauthorized data.
+
+Objective
+
+The objective of this challenge was to:
+
+Identify a SQL injection vulnerability in a product search feature
+
+Exploit the vulnerability to extract sensitive data
+
+Enumerate database tables
+
+Retrieve user credentials and secret information
+
+Understand the real-world impact of SQL injection attacks
+
+Environment Setup
+
+I performed this challenge in the provided lab environment using the following steps:
+
+Verified I was running Kali Linux
+
+Confirmed I was using the training-shell
+
+Started the challenge hub using the running command
+
+Accessed the lab via http://localhost
+
+Navigated to Hub 2 → Injection → SQL Injection Challenge
+
+Step-by-Step Exploitation Process
+1. Testing for SQL Injection Vulnerability
+
+I began by testing whether the product search input was vulnerable. I entered the following payload into the search box:
+
+' OR '1'='1
+
+
+This condition always evaluates to true. When all products were displayed regardless of the search term, it confirmed that user input was being directly executed as part of the SQL query. This verified the presence of a SQL injection vulnerability.
+
+2. Identifying the Number of Columns
+
+To perform a UNION-based SQL injection, I needed to determine how many columns the original SQL query returned. I tested this by injecting:
+
+' UNION SELECT null, null, null, null --
+
+
+The page loaded successfully without errors, confirming that the original query used four columns. This step was essential to ensure that subsequent UNION queries matched the correct structure.
+
+3. Enumerating Database Tables
+
+After confirming UNION injection worked, I enumerated the database tables using the SQLite system table:
+
+' UNION SELECT name, null, null, null FROM sqlite_master WHERE type='table' --
+
+
+This revealed the following tables:
+
+products
+
+users
+
+secrets
+
+This step allowed me to understand the database structure and identify which tables contained sensitive data.
+
+4. Extracting User Credentials
+
+Next, I targeted the users table to retrieve user information:
+
+' UNION SELECT username, password, email, role FROM users --
+
+
+This query displayed usernames, passwords, emails, and roles directly on the page. I was able to identify admin credentials, demonstrating how SQL injection can completely bypass authentication mechanisms.
+
+5. Extracting Secret Data and Flags
+
+Finally, I accessed sensitive information stored in the secrets table:
+
+' UNION SELECT secret_data, access_level, null, null FROM secrets --
+
+
+This revealed confidential data and the secret flag required to complete the challenge.
+
+Results
+
+By exploiting the SQL injection vulnerability, I was able to:
+
+Bypass application logic
+
+Enumerate database tables
+
+Extract user credentials
+
+Access confidential data and secret flags
+
+This demonstrated how dangerous SQL injection vulnerabilities can be when input validation is not implemented.
+
+Key Lessons Learned
+
+Through this challenge, I learned that:
+
+SQL injection occurs when applications trust user input
+
+UNION-based injection can expose entire databases
+
+Attackers can steal credentials and sensitive information
+
+Even simple input fields can become critical attack vectors
+
+Mitigation Techniques
+
+To prevent SQL injection vulnerabilities, applications should:
+
+Use parameterized queries or prepared statements
+
+Validate and sanitize all user input
+
+Apply least-privilege access to database users
+
+Avoid displaying database errors to users
+
+Conclusion
+
+This challenge provided hands-on experience with SQL injection attacks and clearly demonstrated their impact. It reinforced the importance of secure coding practices and proper input handling in web applications.

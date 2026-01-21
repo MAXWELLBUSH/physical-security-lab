@@ -1,0 +1,108 @@
+Shodan – Asset Discovery Lab (Hub 1)
+Overview
+
+In this lab, I used Shodan as part of the Asset Discovery section in Hub 1. The goal was to understand how internet-connected devices and services can be discovered using public search engines.
+
+Shodan is different from traditional scanners because it searches for devices, not websites.
+
+Objective
+
+The objective of this task was to:
+
+Understand what Shodan is
+
+Discover exposed internet-facing assets
+
+Identify services running on IP addresses
+
+Learn how misconfigured services are exposed publicly
+
+What is Shodan?
+
+Shodan is a search engine for internet-connected devices.
+
+It indexes:
+
+Servers
+
+Routers
+
+Webcams
+
+IoT devices
+
+Open ports and services
+
+Shodan collects banner information from publicly accessible systems.
+
+Why Shodan is Important in Asset Discovery
+
+Shodan allows attackers and defenders to:
+
+Find exposed services
+
+Identify outdated software
+
+Discover misconfigured systems
+
+Map real-world attack surfaces
+
+Task Execution and Techniques Used
+1️⃣ Searching by Domain
+
+I searched for assets related to a domain:
+
+hostname:targetdomain.com
+
+2️⃣ Searching by IP Address
+net:192.168.1.0/24
+
+
+This identifies devices within a network range.
+
+3️⃣ Searching by Service or Port
+port:22
+
+
+or
+
+http.title:"login"
+
+
+These queries reveal specific services or login pages.
+
+Key Observations
+
+Shodan reveals real-world exposed services
+
+Some assets may not appear in DNS records
+
+Data includes software versions and banners
+
+Misconfigured services are easily discoverable
+
+Security Impact
+
+Exposed services may lead to:
+
+Unauthorized access
+
+Information leakage
+
+Exploitation of known vulnerabilities
+
+Shodan shows how easily attackers can find exposed systems.
+
+Limitations of Shodan
+
+Depends on previously indexed data
+
+Some information may be outdated
+
+Advanced features require an API key
+
+Conclusion
+
+This lab demonstrated how Shodan is used to discover publicly exposed assets on the internet. I learned how attackers can leverage search queries to identify vulnerable systems without directly scanning targets.
+
+Shodan highlights the importance of proper network configuration and exposure management.

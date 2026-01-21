@@ -1,0 +1,69 @@
+Remote Code Execution (RCE) – Injection Lab (Hub 2)
+Overview
+
+In this lab, I explored Remote Code Execution (RCE) vulnerabilities, which allow attackers to execute arbitrary commands on a server.
+
+RCE is one of the most critical vulnerabilities because it can lead to full system compromise.
+
+Objective
+
+The objective was to:
+
+Understand how command injection leads to RCE
+
+Inject system commands
+
+Observe server-side command execution
+
+What is RCE?
+
+Remote Code Execution occurs when:
+
+User input is passed to system commands
+
+Input is not properly validated
+
+Attackers inject OS-level commands
+
+RCE Challenge 1 – Basic Command Injection
+Payload Used
+; whoami
+
+Result
+
+Server returned the current system user
+
+Confirmed command execution
+
+Explanation
+
+The semicolon (;) terminated the original command and executed a new one.
+
+RCE Challenge 2 – Advanced Command Injection
+Payload Used
+&& ls
+
+
+or
+
+| id
+
+Result
+
+Listed server files or user details
+
+Explanation
+
+Logical operators allow chaining commands.
+
+Security Impact
+
+Read sensitive files
+
+Install malware
+
+Gain full server control
+
+Conclusion
+
+This lab demonstrated how unsanitized input can lead to full server compromise through RCE.

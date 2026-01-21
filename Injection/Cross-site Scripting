@@ -1,0 +1,92 @@
+Cross-Site Scripting (XSS) – Injection Lab (Hub 2)
+Overview
+
+In this lab, I explored Cross-Site Scripting (XSS) vulnerabilities as part of the Injection section in Hub 2. The goal was to understand how improper input handling allows attackers to inject malicious JavaScript code into web applications.
+
+XSS is a client-side injection attack where malicious scripts are executed in the victim’s browser.
+
+Objective
+
+The objective of these challenges was to:
+
+Understand how XSS vulnerabilities occur
+
+Identify different types of XSS
+
+Inject JavaScript payloads into vulnerable inputs
+
+Observe script execution in the browser
+
+What is XSS?
+
+Cross-Site Scripting (XSS) occurs when:
+
+User input is not properly sanitized
+
+Malicious JavaScript is injected
+
+The browser executes the script as trusted content
+
+Why XSS is dangerous:
+
+Steals cookies and sessions
+
+Performs actions as the victim
+
+Redirects users to malicious sites
+
+XSS Challenge 1 – Reflected XSS
+Description
+
+This challenge involved injecting JavaScript into an input field where the output was reflected directly on the page without filtering.
+
+Payload Used
+<script>alert('XSS')</script>
+
+Result
+
+The alert box executed successfully
+
+This confirmed a Reflected XSS vulnerability
+
+Explanation
+
+The application took user input and displayed it back without sanitization, allowing JavaScript execution.
+
+XSS Challenge 2 – Stored XSS
+Description
+
+In this challenge, user input was stored in the backend and later rendered to other users.
+
+Payload Used
+<script>alert('Stored XSS')</script>
+
+Result
+
+Script executed every time the page loaded
+
+Affected all users viewing the page
+
+Explanation
+
+This is more dangerous than reflected XSS because the payload is permanently stored.
+
+XSS Challenge 3 – DOM-Based XSS
+Description
+
+This challenge involved JavaScript manipulating user input directly in the browser.
+
+Payload Used
+<img src=x onerror=alert('DOM XSS')>
+
+Result
+
+JavaScript executed without server interaction
+
+Explanation
+
+The vulnerability existed entirely in client-side JavaScript.
+
+Conclusion
+
+Through these challenges, I learned how XSS vulnerabilities arise from improper input handling and how JavaScript execution can be abused to compromise users.

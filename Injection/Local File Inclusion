@@ -1,0 +1,55 @@
+Local File Inclusion (LFI) – Injection Lab (Hub 2)
+Overview
+
+In this lab, I explored Local File Inclusion (LFI) vulnerabilities, which allow attackers to read files from the server’s filesystem.
+
+Objective
+
+The objective was to:
+
+Understand file path traversal
+
+Exploit insecure file inclusion
+
+Read sensitive system files
+
+What is LFI?
+
+LFI occurs when:
+
+User input controls file paths
+
+Path traversal is not prevented
+
+LFI Challenge 1 – Basic File Inclusion
+Payload Used
+../../../../etc/passwd
+
+Result
+
+Displayed system user accounts
+
+LFI Challenge 2 – Filter Bypass
+Payload Used
+....//....//....//etc/passwd
+
+
+or
+
+../../../../etc/passwd%00
+
+Result
+
+File inclusion bypassed filters
+
+Security Impact
+
+Read configuration files
+
+Leak credentials
+
+Combine with RCE for full compromise
+
+Conclusion
+
+This lab demonstrated how file path manipulation can expose sensitive server data.

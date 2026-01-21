@@ -1,0 +1,132 @@
+Amass – Asset Discovery Lab (Hub 1)
+Overview
+
+In this lab, I used Amass as part of the Asset Discovery section in Hub 1. The objective was to perform comprehensive asset discovery by combining passive and active reconnaissance techniques to uncover domains, subdomains, and related infrastructure.
+
+Amass is one of the most powerful asset discovery tools used in cybersecurity due to its ability to map an organization’s external footprint.
+
+Objective
+
+The objective of this task was to:
+
+Perform subdomain enumeration using Amass
+
+Understand the difference between passive and active discovery
+
+Identify how Amass expands the attack surface
+
+Collect structured asset information
+
+Environment Setup
+
+Operating System: Kali Linux
+
+Shell: training-shell
+
+Lab Platform: Hub 1 – Asset Discovery
+
+Browser: Kali Firefox
+
+Lab Access: http://localhost
+
+I confirmed the lab was running by executing:
+
+running
+
+What is Amass?
+
+Amass is an open-source asset discovery and attack surface mapping tool developed by OWASP.
+
+It gathers information using:
+
+DNS enumeration
+
+Certificate Transparency logs
+
+Search engines
+
+Web scraping
+
+Active probing (when enabled)
+
+Unlike Subfinder, Amass can perform both passive and active enumeration.
+
+Why Amass is Important in Asset Discovery
+
+Amass helps identify:
+
+Subdomains
+
+IP addresses
+
+Autonomous Systems (ASNs)
+
+Network blocks
+
+Related domains
+
+This provides a complete picture of the target’s infrastructure.
+
+Task Execution and Commands Used
+1️⃣ Passive Subdomain Enumeration
+
+To run Amass in passive mode:
+
+amass enum -passive -d targetdomain.com
+
+
+Why passive mode is used:
+
+No direct interaction with the target
+
+Safer and stealthier
+
+Ideal for early reconnaissance
+
+2️⃣ Active Enumeration
+
+To perform active enumeration:
+
+amass enum -active -d targetdomain.com
+
+
+What active mode does:
+
+Sends DNS queries directly
+
+Validates discovered subdomains
+
+Finds more assets than passive mode
+
+3️⃣ Saving Output to a File
+
+To save results:
+
+amass enum -d targetdomain.com -o amass-results.txt
+
+
+This allows further analysis and reporting.
+
+Key Observations
+
+Amass discovered more subdomains than Subfinder
+
+Active mode increased discovery depth
+
+Output included validated DNS data
+
+Results provided insight into domain relationships
+
+Limitations of Amass
+
+Slower than Subfinder
+
+More complex to configure
+
+Active mode may be detected
+
+Conclusion
+
+This lab showed how Amass performs deep asset discovery by combining multiple techniques. I learned how to use both passive and active modes to uncover a broader attack surface.
+
+Amass is best suited for comprehensive reconnaissance after initial discovery with simpler tools.
