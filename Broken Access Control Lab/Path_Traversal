@@ -1,0 +1,107 @@
+📄 README 1 — Path Traversal Vulnerability Report
+Title: Path Traversal Exploitation in File Viewer Application
+1. Introduction
+
+In this lab, I analyzed and exploited a Path Traversal vulnerability in a file viewer application. The application was designed to allow users to view files only from the uploads directory. However, due to improper input validation and weak access control, I was able to access sensitive files located outside the intended directory.
+
+This exercise demonstrated how attackers can bypass directory restrictions and gain unauthorized access to critical system files.
+
+2. Understanding the Application Behavior
+
+I first tested the application by accessing legitimate files such as:
+
+public_document.txt
+
+user_data.txt
+
+When I entered user_data.txt, the application successfully displayed the file contents. From this, I deduced that the application constructed file paths by appending user input to the uploads directory, similar to:
+
+/uploads/ + filename
+
+
+This indicated that the application trusted user input without proper sanitization.
+
+3. Exploitation of the Vulnerability
+
+To test whether the application was vulnerable to path traversal, I injected directory traversal sequences using ../.
+
+I entered the following input:
+
+../secret_config.txt
+
+
+As a result, the application accessed a file located outside the uploads directory. This confirmed that the application failed to restrict file access to the intended directory.
+
+The retrieved file contained highly sensitive information, including:
+
+Database credentials (username and password)
+
+API keys (AWS, Stripe)
+
+Administrative user data and password hashes
+
+This proved that the application was vulnerable to path traversal and allowed unauthorized access to critical configuration files.
+
+4. Why This Vulnerability is Catastrophic
+
+The impact of this vulnerability is severe and potentially catastrophic:
+
+a) Exposure of Sensitive Credentials
+
+By accessing configuration files, attackers can obtain database usernames and passwords. This allows them to connect directly to production databases, modify data, or delete critical records.
+
+b) Compromise of Cloud Infrastructure
+
+Leaked API keys (such as AWS keys) can allow attackers to control cloud resources, deploy malicious servers, or steal data. This can lead to financial losses and service disruption.
+
+c) Administrative Account Takeover
+
+Password hashes of administrative users can be cracked or reused, enabling attackers to gain full control of the system.
+
+d) Full System Compromise
+
+Access to system files such as /etc/passwd can provide insights into the server environment, helping attackers plan further attacks such as privilege escalation or remote code execution.
+
+In real-world systems, such a vulnerability could result in data breaches, financial losses, reputational damage, and legal consequences.
+
+5. Root Cause of the Vulnerability
+
+The vulnerability existed because:
+
+User input was directly concatenated into file paths.
+
+There was no validation or sanitization of file names.
+
+The application did not verify whether requested files were within the allowed directory.
+
+Access control mechanisms were insufficient.
+
+6. Prevention and Mitigation Techniques
+
+To prevent path traversal vulnerabilities, the following measures should be implemented:
+
+a) Input Validation and Sanitization
+
+Reject or sanitize dangerous patterns such as ../, ..\, and encoded equivalents.
+
+b) Whitelisting Allowed Files
+
+Only allow access to predefined file names instead of arbitrary user input.
+
+c) Canonical Path Validation
+
+Resolve the full file path and ensure it resides within the intended directory before serving it.
+
+d) Least Privilege Principle
+
+Run applications with minimal file system permissions to limit damage even if vulnerabilities exist.
+
+e) Secure Coding Practices
+
+Avoid constructing file paths using raw user input and implement strict server-side validation.
+
+7. Conclusion
+
+Through this lab, I demonstrated how a simple file viewer application can become vulnerable to path traversal attacks due to poor input validation and weak access control. I successfully accessed sensitive configuration files outside the intended directory, highlighting the severe security risks associated with this vulnerability.
+
+This lab reinforced the importance of secure file handling, strict access control, and proper validation of user input in web applications.
